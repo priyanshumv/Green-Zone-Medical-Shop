@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owner Dashboard - ePharmacy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-light">
+
+  <div class="container py-4">
+    <h2 class="mb-4"><i class="fas fa-user-shield me-2"></i>Owner Dashboard</h2>
+
+    <!-- ADD PRODUCT FORM -->
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header bg-success text-white">
+        <h5 class="mb-0">Add New Product</h5>
+      </div>
+      <div class="card-body">
+        <form id="ownerForm" enctype="multipart/form-data">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label">Product Name</label>
+              <input type="text" name="name" class="form-control" placeholder="Product Name" required>
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Price (₹)</label>
+              <input type="number" name="price" class="form-control" placeholder="Price" required>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Brand</label>
+              <select name="brand" class="form-select" required>
+                <option value="">Select Brand</option>
+                <option value="Index">Index (Featured)</option>
+                <option value="Himalaya">Himalaya</option>
+                <option value="Dabur">Dabur</option>
+                <option value="Patanjali">Patanjali</option>
+                <option value="Zandu">Zandu</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Product Image</label>
+              <input type="file" name="image" class="form-control" accept="image/*" required>
+            </div>
+          </div>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-success">
+              <i class="fas fa-save me-2"></i>Add Product
+            </button>
+          </div>
+        </form>
+        <p id="ownerStatus" class="mt-2 fw-bold"></p>
+      </div>
+    </div>
+
+    <!-- TABS NAVIGATION -->
+    <ul class="nav nav-tabs mb-3" id="dashboardTabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="tab" href="#products">
+          <i class="fas fa-pills me-2"></i>Products
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#orders">
+          <i class="fas fa-shopping-cart me-2"></i>Customer Orders
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#prescriptions">
+          <i class="fas fa-file-prescription me-2"></i>Prescriptions
+        </a>
+      </li>
+    </ul>
+
+    <!-- TAB CONTENT -->
+    <div class="tab-content">
+      
+      <!-- PRODUCTS TAB -->
+      <div class="tab-pane fade show active" id="products">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">All Products</div>
+          <div class="card-body">
+            <table class="table table-bordered align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>#</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Brand</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="productList"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- CUSTOMER ORDERS TAB -->
+      <div class="tab-pane fade" id="orders">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">Customer Orders</div>
+          <div class="card-body">
+            <table class="table table-bordered align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>#</th>
+                  <th>Customer Name</th>
+                  <th>Phone</th>
+                  <th>Address</th>
+                  <th>Items</th>
+                  <th>Total Amount</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="orderList"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRESCRIPTIONS TAB -->
+      <div class="tab-pane fade" id="prescriptions">
+        <div class="card shadow-sm">
+          <div class="card-header">Uploaded Prescriptions</div>
+          <div class="card-body">
+            <table class="table table-bordered align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>#</th>
+                  <th>Preview</th>
+                  <th>Name</th>
+                  <th>Mobile</th>
+                  <th>Uploaded</th>
+                </tr>
+              </thead>
+              <tbody id="prescriptionList"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/owner.js"></script>
+</body>
+</html>
